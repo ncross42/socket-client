@@ -11,7 +11,7 @@
         </v-flex>
         <v-bottom-nav :value="true" absolute color="blue">
           <v-layout>
-            <app-chat-box></app-chat-box>
+            <app-chat-box :handle="HANDLE"></app-chat-box>
           </v-layout>
         </v-bottom-nav>
     </v-layout>
@@ -34,19 +34,20 @@ export default {
     ...mapGetters(['CHATS','HANDLE'])
   },
   mounted(){
-    this.$store.dispatch("SET_CHAT");
+    this.$store.dispatch("SET_CHAT")
   },
   updated(){
-    var container = this.$refs.chatContainer;
-    container.scrollTop = container.scrollHeight;
+    var container = this.$refs.chatContainer
+    container.scrollTop = container.scrollHeight
   },
   sockets : {
     connect: function(){
-      console.log('socket connected');
+      console.log('socket connected')
     },
-    chat : function(val){
-      this.$store.dispatch("ADD_CHAT",val);
-    }
+    // chat : function(val){
+    //   console.log('on_chat:',val)
+    //   this.$store.dispatch("ADD_CHAT",val)
+    // }
   }
 }
 

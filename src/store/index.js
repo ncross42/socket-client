@@ -10,12 +10,14 @@ export const store = new Vuex.Store({
     handle : ""
   },
   getters : {
-    CHATS : state => {
-      return state.chats
-    },
-    HANDLE : state => {
-      return state.handle
-    }
+    CHATS : state => state.chats,
+    HANDLE : state => state.handle,
+    // CHATS : {
+    //   return state.chats
+    // },
+    // HANDLE : state => {
+    //   return state.handle
+    // }
   },
   mutations : {
     SET_CHAT : (state,payload) => {
@@ -24,6 +26,9 @@ export const store = new Vuex.Store({
     ADD_CHAT : (state,payload) => {
       state.chats.push(payload);
     },
+    // SOCKET_CHAT: (state,payload)=> {
+    //   state.chats.push(payload);
+    // },
     SET_HANDLE : (state,payload) => {
       state.handle = payload;
     }
@@ -35,7 +40,11 @@ export const store = new Vuex.Store({
       console.log(data);
       context.commit("SET_CHAT",data);
     },
-    ADD_CHAT : (context,payload)=> {
+    // ADD_CHAT : (context,payload)=> {
+    //   context.commit("ADD_CHAT",payload);
+    // },
+    socket_chat: (context,payload)=> {
+      console.log('SOCKET_CHAT:',payload)
       context.commit("ADD_CHAT",payload);
     },
     SET_HANDLE : (context,payload)=> {

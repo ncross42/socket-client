@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  props : ['handle'],
   data () {
     return {
       message : ""
@@ -29,6 +30,7 @@ export default {
             message : this.message
           }
         let response = await this.$socket.emit('chat',message);
+        console.log('sendMessage:',response)
         this.message = "";
       }
     },
